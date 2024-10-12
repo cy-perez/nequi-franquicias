@@ -1,0 +1,12 @@
+buildscript {
+    ext {
+        springBootVersion = '3.3.4'
+    }
+}
+
+dependencies {
+    implementation project(':service')
+    implementation project(':core')
+
+    implementation 'org.springframework:spring-web:6.1.13'
+}

@@ -1,0 +1,25 @@
+buildscript {
+    ext {
+        springCloudVersion = '2023.0.3'
+        jakartaServletVersion = '6.1.0'
+        swaggerModelsVersion = '2.2.23'
+        springBootVersion = '3.3.4'
+        lombokVersion = '1.18.34'
+        assertjVersion = '3.26.3'
+        openApiVersion = '2.6.0'
+        junitVersion = '5.11.2'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+    id "java"
+    id "jacoco"
+}
+
+apply from: './main.gradle'
