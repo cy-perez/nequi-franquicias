@@ -5,6 +5,8 @@ import lombok.extern.java.Log;
 import nequi.franquicias.domain.common.ProductoGatewayRepository;
 import nequi.franquicias.domain.common.model.Producto;
 
+import java.util.List;
+
 @Log
 @RequiredArgsConstructor
 public class ProductoService {
@@ -26,5 +28,9 @@ public class ProductoService {
 
         productoRepository.deleteById(id);
         return producto;
+    }
+
+    public List<Producto> findProductsGreatStock(List<Integer> idsSucursales){
+        return productoRepository.findProductGreatStock(idsSucursales);
     }
 }

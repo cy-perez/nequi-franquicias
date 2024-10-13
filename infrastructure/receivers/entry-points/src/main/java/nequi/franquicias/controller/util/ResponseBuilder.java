@@ -63,6 +63,24 @@ public class ResponseBuilder {
                         .build());
     }
 
+    public static <T> ResponseEntity<ResponseDTO<T>> build404SinSucursalesResponse() {
+        return ResponseEntity.status(404).body(
+                ResponseDTO.<T>builder()
+                        .transactionId(UUID.randomUUID().toString())
+                        .message("Franquicia sin sucursales asociadas")
+                        .code(404)
+                        .build());
+    }
+
+    public static <T> ResponseEntity<ResponseDTO<T>> build404SinProductosResponse() {
+        return ResponseEntity.status(404).body(
+                ResponseDTO.<T>builder()
+                        .transactionId(UUID.randomUUID().toString())
+                        .message("Sucursal(es) sin productos asociados")
+                        .code(404)
+                        .build());
+    }
+
     public static <T> ResponseEntity<ResponseDTO<T>> build200DeletedResponse(T data) {
         return ResponseEntity.ok(
                 ResponseDTO.<T>builder()

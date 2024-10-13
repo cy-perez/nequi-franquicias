@@ -7,6 +7,8 @@ import nequi.franquicias.domain.common.model.Sucursal;
 import nequi.franquicias.mapper.SucursalRepositoryMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @AllArgsConstructor
 public class SucursalRepositoryAdapter implements SucursalGatewayRepository {
@@ -25,4 +27,11 @@ public class SucursalRepositoryAdapter implements SucursalGatewayRepository {
         var sucursalOptional = repository.findById(id);
         return sucursalOptional.map(SucursalRepositoryMapper::mapEntityToSucursal).orElse(null);
     }
+
+    @Override
+    public List<Sucursal> finByIdFranchise(int id) {
+        var sucursales = repository.finByIdFranchise(id);
+        return sucursales.stream().map(SucursalRepositoryMapper::mapEntityToSucursal).toList();
+    }
+
 }

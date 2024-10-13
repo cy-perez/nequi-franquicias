@@ -6,12 +6,15 @@ import nequi.franquicias.controller.dto.ResponseDTO;
 import nequi.franquicias.controller.dto.ProductoRequestDTO;
 import nequi.franquicias.controller.dto.ProductoResponseDTO;
 import nequi.franquicias.controller.util.ResponseBuilder;
+import nequi.franquicias.domain.common.model.Sucursal;
+import nequi.franquicias.service.FranquiciaService;
 import nequi.franquicias.service.ProductoService;
 import nequi.franquicias.service.SucursalService;
 import nequi.franquicias.controller.mapper.ProductoMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Log
@@ -22,6 +25,7 @@ public class ProductoController {
 
     private final ProductoService productoService;
     private final SucursalService sucursalService;
+    private final FranquiciaService franquiciaService;
 
     @PostMapping("/producto")
     public ResponseEntity<ResponseDTO<ProductoResponseDTO>> crearProducto(
@@ -60,5 +64,28 @@ public class ProductoController {
                 ProductoMapper.mapDtoToProductoModificado(productoRequestDto, producto, sucursalAsociada));
 
         return ResponseBuilder.build200Response(ProductoMapper.mapProductoToDto(productoModificado));
+    }
+
+    @GetMapping("/producto/mayor-stock/franquicia/{id}")
+    public ResponseEntity<ResponseDTO<List<ProductoResponseDTO>>> productosConMayorStock(@PathVariable("id") int id){
+        var franquiciaAsociada = franquiciaService.findById(id);
+        if(Objects.isNull(franquiciaAsociada)){
+            return ResponseBuilder.build400FranquiciaNoExisteResponse();
+        }
+
+        var sucursalesAsociadas = sucursalService.findBranchesByFranchise(id);
+        if(Objects.isNull(sucursalesAsociadas) || sucursalesAsociadas.isEmpty()){
+            return ResponseBuilder.build404SinSucursalesResponse();
+        }
+
+        var idsSucursales = sucursalesAsociadas.stream().map(Sucursal::getId).toList();
+
+        var productos = productoService.findProductsGreatStock(idsSucursales);
+
+        if(Objects.isNull(productos) || productos.isEmpty()){
+            return ResponseBuilder.build404SinProductosResponse();
+        }
+
+        return ResponseBuilder.build200Response(productos.stream().map(ProductoMapper::mapProductoToDto).toList());
     }
 }
