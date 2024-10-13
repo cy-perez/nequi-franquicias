@@ -1,5 +1,6 @@
 package nequi.franquicias;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import nequi.franquicias.domain.common.FranquiciaGatewayRepository;
 import nequi.franquicias.domain.common.model.Franquicia;
@@ -21,8 +22,15 @@ public class FranquiciaRepositoryAdapter implements FranquiciaGatewayRepository 
     }
 
     @Override
+    @Transactional
     public Franquicia save(Franquicia franquicia) {
         var franquiciaCreada = repository.save(FranquiciaRepositoryMapper.mapFranquiciaToCreateEntity(franquicia));
         return FranquiciaRepositoryMapper.mapEntityToFranquicia(franquiciaCreada);
+    }
+
+    @Override
+    public Franquicia findById(int id) {
+        var franquiciaOptional = repository.findById(id);
+        return franquiciaOptional.map(FranquiciaRepositoryMapper::mapEntityToFranquicia).orElse(null);
     }
 }

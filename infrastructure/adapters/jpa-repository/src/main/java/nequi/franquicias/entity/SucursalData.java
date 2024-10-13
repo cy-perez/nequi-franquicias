@@ -6,20 +6,22 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Builder(toBuilder = true)
 @Entity
-@Table(name = "franquicias")
+@Table(name = "sucursales")
 @NoArgsConstructor
 @AllArgsConstructor
-public class FranquiciaData {
+public class SucursalData {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "nombre_franquicia", nullable = false, length = 50)
+    @Column(name = "nombre_sucursal", nullable = false, length = 50)
     private String nombre;
+
+    @ManyToOne
+    @JoinColumn(name = "franquicia")
+    private FranquiciaData franquicia;
 }

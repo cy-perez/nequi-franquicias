@@ -20,4 +20,8 @@ public class FranquiciaService {
     public Franquicia save(Franquicia franquicia){
         return franquiciaRepository.save(franquicia);
     }
+
+    public Franquicia findById(int id){
+        return franquiciaRepository.findById(id);
+    }
 }

@@ -9,7 +9,11 @@ import nequi.franquicias.controller.mapper.FranquiciaMapper;
 import nequi.franquicias.controller.util.ResponseBuilder;
 import nequi.franquicias.service.FranquiciaService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 

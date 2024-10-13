@@ -9,4 +9,6 @@ public interface FranquiciaGatewayRepository {
     List<Franquicia> findAll();
 
     Franquicia save(Franquicia franquicia);
+
+    Franquicia findById(int id);
 }
