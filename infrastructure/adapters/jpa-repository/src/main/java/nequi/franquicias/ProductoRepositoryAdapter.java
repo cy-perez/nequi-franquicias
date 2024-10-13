@@ -19,4 +19,16 @@ public class ProductoRepositoryAdapter implements ProductoGatewayRepository {
         var productoCreado = repository.save(ProductoRepositoryMapper.mapProductoToEntity(producto));
         return ProductoRepositoryMapper.mapEntityToProducto(productoCreado);
     }
+
+    @Override
+    public Producto findById(int id) {
+        var productoOptional = repository.findById(id);
+        return productoOptional.map(ProductoRepositoryMapper::mapEntityToProducto).orElse(null);
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(int id) {
+        repository.deleteById(id);
+    }
 }

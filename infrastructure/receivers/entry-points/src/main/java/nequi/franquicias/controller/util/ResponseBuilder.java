@@ -53,4 +53,23 @@ public class ResponseBuilder {
                         .code(400)
                         .build());
     }
+
+    public static <T> ResponseEntity<ResponseDTO<T>> build404Response() {
+        return ResponseEntity.status(404).body(
+                ResponseDTO.<T>builder()
+                        .transactionId(UUID.randomUUID().toString())
+                        .message("Registro no encontrado")
+                        .code(404)
+                        .build());
+    }
+
+    public static <T> ResponseEntity<ResponseDTO<T>> build200DeletedResponse(T data) {
+        return ResponseEntity.ok(
+                ResponseDTO.<T>builder()
+                        .transactionId(UUID.randomUUID().toString())
+                        .message("Borrado exitoso")
+                        .code(200)
+                        .data(data)
+                        .build());
+    }
 }

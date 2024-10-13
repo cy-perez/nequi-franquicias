@@ -14,4 +14,17 @@ public class ProductoService {
     public Producto save(Producto producto){
         return productoRepository.save(producto);
     }
+
+    public Producto findById(int id){
+        return productoRepository.findById(id);
+    }
+
+    public Producto deleteById(int id){
+
+        var producto = productoRepository.findById(id);
+        if(producto == null) return null;
+
+        productoRepository.deleteById(id);
+        return producto;
+    }
 }

@@ -23,4 +23,14 @@ public class ProductoMapper {
                 .sucursal(sucursal)
                 .build();
     }
+
+    public static Producto mapDtoToProductoModificado(ProductoRequestDTO productoRequestDTO, Producto producto,
+                                                      Sucursal sucursal){
+        return Producto.builder()
+                .id(producto.getId())
+                .nombre(productoRequestDTO.getNombreProducto())
+                .cantidad(productoRequestDTO.getCantidad())
+                .sucursal(sucursal)
+                .build();
+    }
 }
