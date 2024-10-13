@@ -16,7 +16,13 @@ public class SucursalRepositoryAdapter implements SucursalGatewayRepository {
     @Override
     @Transactional
     public Sucursal save(Sucursal sucursal) {
-        var sucursalCreada = repository.save(SucursalRepositoryMapper.mapSucursalToCreateEntity(sucursal));
+        var sucursalCreada = repository.save(SucursalRepositoryMapper.mapSucursalToEntity(sucursal));
         return SucursalRepositoryMapper.mapEntityToSucursal(sucursalCreada);
+    }
+
+    @Override
+    public Sucursal findById(int id) {
+        var sucursalOptional = repository.findById(id);
+        return sucursalOptional.map(SucursalRepositoryMapper::mapEntityToSucursal).orElse(null);
     }
 }

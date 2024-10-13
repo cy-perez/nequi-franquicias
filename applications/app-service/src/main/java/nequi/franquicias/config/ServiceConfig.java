@@ -1,8 +1,10 @@
 package nequi.franquicias.config;
 
 import nequi.franquicias.domain.common.FranquiciaGatewayRepository;
+import nequi.franquicias.domain.common.ProductoGatewayRepository;
 import nequi.franquicias.domain.common.SucursalGatewayRepository;
 import nequi.franquicias.service.FranquiciaService;
+import nequi.franquicias.service.ProductoService;
 import nequi.franquicias.service.SucursalService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,5 +20,10 @@ public class ServiceConfig {
     @Bean
     public SucursalService sucursalService(SucursalGatewayRepository sucursalGatewayRepository){
         return new SucursalService(sucursalGatewayRepository);
+    }
+
+    @Bean
+    public ProductoService productoService(ProductoGatewayRepository productoGatewayRepository){
+        return new ProductoService(productoGatewayRepository);
     }
 }

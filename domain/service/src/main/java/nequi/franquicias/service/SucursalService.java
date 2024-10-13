@@ -14,4 +14,8 @@ public class SucursalService {
     public Sucursal save(Sucursal sucursal){
         return sucursalRepository.save(sucursal);
     }
+
+    public Sucursal findById(int id){
+        return sucursalRepository.findById(id);
+    }
 }

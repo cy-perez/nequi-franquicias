@@ -12,8 +12,9 @@ public class FranquiciaRepositoryMapper {
                 .build();
     }
 
-    public static FranquiciaData mapFranquiciaToCreateEntity(Franquicia franquicia){
+    public static FranquiciaData mapFranquiciaToEntity(Franquicia franquicia){
         return FranquiciaData.builder()
+                .id(franquicia.getId())
                 .nombre(franquicia.getNombre())
                 .build();
     }

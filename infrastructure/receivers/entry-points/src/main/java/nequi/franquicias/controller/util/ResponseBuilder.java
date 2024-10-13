@@ -44,4 +44,13 @@ public class ResponseBuilder {
                         .code(400)
                         .build());
     }
+
+    public static <T> ResponseEntity<ResponseDTO<T>> build400SucursalNoExisteResponse() {
+        return ResponseEntity.status(400).body(
+                ResponseDTO.<T>builder()
+                        .transactionId(UUID.randomUUID().toString())
+                        .message("Request incorrecta: no existe sucursal con el id relacionado")
+                        .code(400)
+                        .build());
+    }
 }

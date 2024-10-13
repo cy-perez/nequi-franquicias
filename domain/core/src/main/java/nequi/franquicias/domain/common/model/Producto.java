@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class SucursalCreate {
+public class Producto {
     private int id;
     private String nombre;
-    private int franquicia;
+    private int cantidad;
+    private Sucursal sucursal;
 }

@@ -1,6 +1,5 @@
 package nequi.franquicias.controller.mapper;
 
-import nequi.franquicias.controller.dto.FranquiciaResponseDTO;
 import nequi.franquicias.controller.dto.SucursalRequestDTO;
 import nequi.franquicias.controller.dto.SucursalResponseDTO;
 import nequi.franquicias.domain.common.model.Franquicia;
@@ -12,7 +11,7 @@ public class SucursalMapper {
         return SucursalResponseDTO.builder()
                 .id(sucursal.getId())
                 .nombre(sucursal.getNombre())
-                .franquicia(mapFranquiciaToDto(sucursal.getFranquicia()))
+                .franquicia(FranquiciaMapper.mapFranquiciaToDto(sucursal.getFranquicia()))
                 .build();
     }
 
@@ -20,13 +19,6 @@ public class SucursalMapper {
         return Sucursal.builder()
                 .nombre(sucursalRequestDTO.getNombreSucursal())
                 .franquicia(franquicia)
-                .build();
-    }
-
-    private static FranquiciaResponseDTO mapFranquiciaToDto(Franquicia franquicia){
-        return FranquiciaResponseDTO.builder()
-                .id(franquicia.getId())
-                .nombre(franquicia.getNombre())
                 .build();
     }
 }

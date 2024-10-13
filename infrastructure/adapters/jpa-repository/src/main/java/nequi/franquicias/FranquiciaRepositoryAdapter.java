@@ -24,7 +24,7 @@ public class FranquiciaRepositoryAdapter implements FranquiciaGatewayRepository 
     @Override
     @Transactional
     public Franquicia save(Franquicia franquicia) {
-        var franquiciaCreada = repository.save(FranquiciaRepositoryMapper.mapFranquiciaToCreateEntity(franquicia));
+        var franquiciaCreada = repository.save(FranquiciaRepositoryMapper.mapFranquiciaToEntity(franquicia));
         return FranquiciaRepositoryMapper.mapEntityToFranquicia(franquiciaCreada);
     }
 
