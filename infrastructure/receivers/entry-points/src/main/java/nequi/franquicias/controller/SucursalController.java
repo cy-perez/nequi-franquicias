@@ -2,18 +2,14 @@ package nequi.franquicias.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
-import nequi.franquicias.controller.dto.ResponseDTO;
-import nequi.franquicias.controller.dto.SucursalRequestDTO;
-import nequi.franquicias.controller.dto.SucursalResponseDTO;
+import nequi.franquicias.controller.dto.*;
+import nequi.franquicias.controller.mapper.ProductoMapper;
 import nequi.franquicias.controller.mapper.SucursalMapper;
 import nequi.franquicias.controller.util.ResponseBuilder;
 import nequi.franquicias.service.FranquiciaService;
 import nequi.franquicias.service.SucursalService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
@@ -41,6 +37,22 @@ public class SucursalController {
         } catch (Exception ex) {
             return ResponseBuilder.build500Response(ex.getMessage());
         }
+    }
+
+    @PutMapping("/sucursal/{id}")
+    public ResponseEntity<ResponseDTO<SucursalResponseDTO>> modificarSucursalPorId(
+            @PathVariable("id") int id, @RequestBody SucursalRequestDTO sucursalRequestDto){
+
+        var sucursal = sucursalService.findById(id);
+        if(sucursal == null) return ResponseBuilder.build400SucursalNoExisteResponse();
+
+        var franquiciaAsociada = franquiciaService.findById(sucursalRequestDto.getIdFranquicia());
+        if(franquiciaAsociada == null) return ResponseBuilder.build400FranquiciaNoExisteResponse();
+
+        var sucursalModificada = sucursalService.save(
+                SucursalMapper.mapDtoToSucursalModificadA(sucursalRequestDto, sucursal, franquiciaAsociada));
+
+        return ResponseBuilder.build200Response(SucursalMapper.mapSucursalToDto(sucursalModificada));
     }
 
 }

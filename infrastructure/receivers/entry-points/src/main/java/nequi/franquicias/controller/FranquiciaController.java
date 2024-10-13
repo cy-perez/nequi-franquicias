@@ -2,9 +2,7 @@ package nequi.franquicias.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
-import nequi.franquicias.controller.dto.FranquiciaRequestDTO;
-import nequi.franquicias.controller.dto.FranquiciaResponseDTO;
-import nequi.franquicias.controller.dto.ResponseDTO;
+import nequi.franquicias.controller.dto.*;
 import nequi.franquicias.controller.mapper.FranquiciaMapper;
 import nequi.franquicias.controller.util.ResponseBuilder;
 import nequi.franquicias.service.FranquiciaService;
@@ -42,5 +40,18 @@ public class FranquiciaController {
         } catch (Exception ex) {
             return ResponseBuilder.build500Response(ex.getMessage());
         }
+    }
+
+    @PutMapping("/franquicia/{id}")
+    public ResponseEntity<ResponseDTO<FranquiciaResponseDTO>> modificarFranquiciaPorId(
+            @PathVariable("id") int id, @RequestBody FranquiciaRequestDTO franquiciaRequestDto){
+
+        var franquicia = franquiciaService.findById(id);
+        if(franquicia == null) return ResponseBuilder.build400FranquiciaNoExisteResponse();
+
+        var franquiciaModificada = franquiciaService.save(
+                FranquiciaMapper.mapDtoToFranquiciaModificada(franquiciaRequestDto, franquicia));
+
+        return ResponseBuilder.build200Response(FranquiciaMapper.mapFranquiciaToDto(franquiciaModificada));
     }
 }

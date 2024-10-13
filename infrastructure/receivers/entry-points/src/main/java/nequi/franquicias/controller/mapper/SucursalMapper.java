@@ -21,4 +21,13 @@ public class SucursalMapper {
                 .franquicia(franquicia)
                 .build();
     }
+
+    public static Sucursal mapDtoToSucursalModificadA(SucursalRequestDTO sucursalRequestDTO, Sucursal sucursal,
+                                                      Franquicia franquicia) {
+        return Sucursal.builder()
+                .id(sucursal.getId())
+                .nombre(sucursalRequestDTO.getNombreSucursal())
+                .franquicia(franquicia)
+                .build();
+    }
 }

@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "30ec9dc5-be5b-405e-926b-09a448a22374",
+		"name": "nequi-franquicias",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16101814"
+	},
+	"item": [
+		{
+			"name": "ListarFranquicias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/nequi-franquicias/franquicias",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"nequi-franquicias",
+						"franquicias"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearFranquicia",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreFranquicia\": \"Titiribí\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/nequi-franquicias/franquicia",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"nequi-franquicias",
+						"franquicia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearSucursal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreSucursal\": \"El Centenario\",\r\n    \"idFranquicia\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/nequi-franquicias/sucursal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"nequi-franquicias",
+						"sucursal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearProducto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreProducto\": \"Posh Micro X S240\",\r\n    \"cantidad\": 10,\r\n    \"idSucursal\": 30\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/nequi-franquicias/producto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"nequi-franquicias",
+						"producto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarProducto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreProducto\": \"Posh Micro X S240\",\r\n    \"cantidad\": 15,\r\n    \"idSucursal\": 29\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/nequi-franquicias/producto/24",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"nequi-franquicias",
+						"producto",
+						"24"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BorrarProducto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/nequi-franquicias/producto/23",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"nequi-franquicias",
+						"producto",
+						"23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProductoMayorStock",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/nequi-franquicias/producto/mayor-stock/franquicia/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"nequi-franquicias",
+						"producto",
+						"mayor-stock",
+						"franquicia",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarFranquicia",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreFranquicia\": \"Rionegro\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/nequi-franquicias/franquicia/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"nequi-franquicias",
+						"franquicia",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarSucursal",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreSucursal\": \"La Violeta\",\r\n    \"idFranquicia\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/nequi-franquicias/sucursal/30",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"nequi-franquicias",
+						"sucursal",
+						"30"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

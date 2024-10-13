@@ -18,4 +18,11 @@ public class FranquiciaMapper {
                 .nombre(franquiciaRequestDTO.getNombreFranquicia())
                 .build();
     }
+
+    public static Franquicia mapDtoToFranquiciaModificada(FranquiciaRequestDTO franquiciaRequestDTO, Franquicia franquicia){
+        return Franquicia.builder()
+                .id(franquicia.getId())
+                .nombre(franquiciaRequestDTO.getNombreFranquicia())
+                .build();
+    }
 }
