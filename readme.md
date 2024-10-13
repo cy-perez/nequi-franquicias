@@ -9,6 +9,7 @@
 - [Descripción de la necesidad](#descripción-de-la-necesidad)
 - [Diagrama de arquitectura de la solución](#diagrama-de-arquitectura-de-la-solución)
 - [Manual de despliegue en ambiente local](#manual-de-despliegue-en-ambiente-local)
+- [Manual de ejecucion en instancia EC2 de AWS](#manual-de-ejecucion-en-instancia-ec2-de-aws)
 - [Ejemplos de JSON para Request y Response](#ejemplos-de-json-para-request-y-response)
 
 #### Descripción de la necesidad
@@ -56,6 +57,10 @@
         - **Database:** franquiciasdb
         - **Username:** postgres
         - **Password:** postgres
+
+#### Manual de ejecucion en instancia EC2 de AWS
+Para realizar directamente la ejecución de peticiones sin la necesidad de hacer un despliegue local, el microservicio se encuentra desplegado en una instancia de EC2 (Amazon Elastic Compute Cloud) de AWS.
+Luego de importar la colección de Postman (applications/app-service/src/main/resources/nequi-franquicias.postman_collection.json), se reemplaza la parte inicial de las url de las peticiones (http://localhost:8080) por la dirección IP pública asignada a la instancia (http://18.234.74.93), por ejemplo: http://18.234.74.93/api/v1/nequi-franquicias/franquicias
 
 #### *Prerrequisitos*
 
